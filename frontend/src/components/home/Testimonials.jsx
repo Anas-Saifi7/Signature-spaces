@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { testimonials as staticTestimonials } from "../../core/data/testimonialsData";
+import { testimonials as staticTestimonials } from "../../data/testimonialsData";
 
 export default function Testimonials() {
   const [reviews, setReviews] = useState([]);
