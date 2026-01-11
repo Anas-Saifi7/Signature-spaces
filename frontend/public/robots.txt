@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Block unnecessary paths
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Allow assets
+Allow: /assets/
+Allow: /images/
+
+# Sitemap
+Sitemap: https://signaturespacestudio.com/sitemap.xml
