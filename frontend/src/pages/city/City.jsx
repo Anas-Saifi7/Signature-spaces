@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import SEO from "../../core/SEO";
-import { cityContent } from "./cityData";
+import { cityContent } from "../../data/cityData";
+
 
 export default function City() {
   const { city } = useParams();
