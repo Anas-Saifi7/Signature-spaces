@@ -9,7 +9,7 @@ import Terms from "../pages/Terms";
 const Home = lazy(() => import("../pages/home/Home"));
 const About = lazy(() => import("../pages/about/About"));
 const Projects = lazy(() => import("../pages/projects/Projects"));
-const Services = lazy(() => import("../pages/services/Services"));
+const Services = lazy(() => import("../pages/services/ServicesSection"));
 const Contact = lazy(() => import("../pages/contact/Contact"));
 const City = lazy(() => import("../pages/city/City"));
 
