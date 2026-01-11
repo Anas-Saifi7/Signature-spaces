@@ -24,7 +24,7 @@ export default function Contact() {
     setSuccess(false);
 
     try {
-      await axios.post("http://localhost:5000/api/contact", form);
+     axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, form);
       setSuccess(true);
       setForm({
         name: "",
