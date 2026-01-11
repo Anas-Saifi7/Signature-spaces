@@ -18,14 +18,17 @@ export default function Testimonials() {
   });
 
   // ================= FETCH REVIEWS =================
-  const fetchReviews = async () => {
-    try {
-      const res = await axios.get("http://localhost:5000/api/reviews");
-      setReviews([...res.data, ...staticTestimonials]);
-    } catch {
-      setReviews(staticTestimonials);
-    }
-  };
+const fetchReviews = async () => {
+  try {
+    const res = await axios.get(
+      `${import.meta.env.VITE_API_URL}/api/reviews`
+    );
+    setReviews([...res.data, ...staticTestimonials]);
+  } catch {
+    setReviews(staticTestimonials);
+  }
+};
+
 
   useEffect(() => {
     fetchReviews();
@@ -51,7 +54,7 @@ export default function Testimonials() {
 
     if (review._id) {
       // REAL → backend
-      await axios.delete(`http://localhost:5000/api/reviews/${review._id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/reviews/${review._id}`);
       fetchReviews();
     } else {
       // FAKE → frontend only
@@ -84,13 +87,17 @@ export default function Testimonials() {
         );
       } else if (editingId) {
         // UPDATE REAL
-        await axios.put(`http://localhost:5000/api/reviews/${editingId}`, form);
+        await axios.put(`${import.meta.env.VITE_API_URL}/api/reviews/${editingId}`, form);
         fetchReviews();
       } else {
-        // NEW REAL REVIEW
-        await axios.get(`${import.meta.env.VITE_API_URL}/api/reviews`,form);
-        fetchReviews();
-      }
+  // NEW REAL REVIEW
+  await axios.post(
+    `${import.meta.env.VITE_API_URL}/api/reviews`,
+    form
+  );
+  fetchReviews();
+}
+
     } catch (err) {
       console.error(err);
     }
