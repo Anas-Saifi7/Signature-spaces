@@ -88,7 +88,7 @@ export default function Testimonials() {
         fetchReviews();
       } else {
         // NEW REAL REVIEW
-        await axios.post("http://localhost:5000/api/reviews", form);
+        await axios.get(`${import.meta.env.VITE_API_URL}/api/reviews`,form);
         fetchReviews();
       }
     } catch (err) {
