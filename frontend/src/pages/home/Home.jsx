@@ -7,6 +7,7 @@ import BeforeAfterSlider from "../../components/home/BeforeAfterSlider";
 import ReviewSchema from "../../core/ReviewSchema";
 import Testimonials from "../../components/home/Testimonials";
 import FAQSchema from "../../core/FAQSchema";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [homeForm, setHomeForm] = useState({
@@ -66,18 +67,18 @@ export default function Home() {
               </p>
 
               <div className="mt-8 flex gap-4">
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className="bg-[#b88c4a] text-white px-8 py-3 rounded-md hover:bg-[#a0783f] transition"
                 >
                   Get Free Consultation
-                </a>
-                <a
-                  href="/projects"
+                </Link>
+                <Link
+                  to="/projects"
                   className="bg-white border border-gray-300 px-8 py-3 rounded-md hover:bg-gray-50 transition"
                 >
                   View Our Projects
-                </a>
+               </Link>
               </div>
             </div>
           </div>
@@ -217,12 +218,12 @@ export default function Home() {
                   </div>
 
                   {/* CTA */}
-                  <a
-                    href="/contact"
+                  <Link
+                    to="/contact"
                     className="inline-block mt-5 text-sm font-medium text-[#b88c4a] hover:underline"
                   >
                     Get Consultation →
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -373,7 +374,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= VIDEO + BEFORE AFTER (ENTERPRISE) ================= */}
       <section className="py-10 bg-gradient-to-b from-white via-[#fafafa] to-white">
         <div className="max-w-7xl mx-auto px-6">
           {/* SECTION INTRO */}
@@ -463,12 +463,12 @@ export default function Home() {
 
           {/* FINAL CTA */}
           <div className="mt-24 text-center">
-            <a
-              href="/projects"
+            <Link
+              to="/projects"
               className="inline-block bg-[#b88c4a] text-white px-12 py-4 rounded-md font-semibold hover:bg-[#a0783f] transition"
             >
               Explore Our Completed Projects
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -513,21 +513,21 @@ export default function Home() {
             </ul>
 
             <div className="mt-12 flex flex-wrap gap-4">
-              <a
-                href="tel:+919643715746"
+              <Link
+                to="tel:+919643715746"
                 className="border border-gray-300 px-8 py-4 rounded-md font-medium hover:bg-white transition"
               >
                 📞 Call Now
-              </a>
+              </Link>
 
-              <a
-                href="https://wa.me/919643715746"
+              <Link
+                to="https://wa.me/919643715746"
                 target="_blank"
                 rel="noreferrer"
                 className="bg-[#25D366] text-white px-8 py-4 rounded-md font-semibold hover:opacity-90 transition"
               >
                 💬 WhatsApp Chat
-              </a>
+              </Link>
             </div>
 
             <p className="mt-4 text-sm text-gray-500">
@@ -676,48 +676,48 @@ export default function Home() {
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4 text-sm text-gray-700">
-            <a
-              href="/interior-designer/delhi"
+            <Link
+              to="/interior-designer/delhi"
               className="underline hover:text-[#b88c4a]"
             >
               Interior Designer in Delhi
-            </a>
-            <a
-              href="/interior-designer/noida"
+            </Link>
+            <Link
+              to="/interior-designer/noida"
               className="underline hover:text-[#b88c4a]"
             >
               Interior Designer in Noida
-            </a>
-            <a
-              href="/interior-designer/gurgaon"
+            </Link>
+            <Link
+              to="/interior-designer/gurgaon"
               className="underline hover:text-[#b88c4a]"
             >
               Interior Designer in Gurgaon
-            </a>
-            <a
-              href="/interior-designer/mumbai"
+            </Link>
+            <Link
+              to="/interior-designer/mumbai"
               className="underline hover:text-[#b88c4a]"
             >
               Interior Designer in Mumbai
-            </a>
-            <a
-              href="/interior-designer/bangalore"
+            </Link>
+            <Link
+              to="/interior-designer/bangalore"
               className="underline hover:text-[#b88c4a]"
             >
               Interior Designer in Bangalore
-            </a>
-            <a
-              href="/interior-designer/hyderabad"
+            </Link>
+            <Link
+              to="/interior-designer/hyderabad"
               className="underline hover:text-[#b88c4a]"
             >
               Interior Designer in Hyderabad
-            </a>
-            <a
-              href="/interior-designer/chennai"
+            </Link>
+            <Link
+              to="/interior-designer/chennai"
               className="underline hover:text-[#b88c4a]"
             >
               Interior Designer in Chennai
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -831,21 +831,21 @@ export default function Home() {
 
           {/* CTA Buttons */}
           <div className="mt-10 flex flex-col sm:flex-row gap-5 justify-center">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="inline-flex items-center justify-center gap-2 bg-white text-[#b88c4a] px-10 py-4 rounded-lg font-semibold shadow-lg hover:scale-105 transition"
             >
               Get Free Consultation
-            </a>
+            </Link>
 
-            <a
-              href="https://wa.me/919643715746"
+            <Link
+              to="https://wa.me/917668014201"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 border border-white/60 px-10 py-4 rounded-lg font-semibold hover:bg-white hover:text-[#b88c4a] transition"
             >
               WhatsApp Us
-            </a>
+            </Link>
           </div>
         </div>
       </section>

@@ -80,10 +80,10 @@ export default function Contact() {
                 📍 <strong>Service Area:</strong> PAN India
               </li>
               <li>
-                📞 <strong>Phone:</strong> +91 96437 15746
+                📞 <strong>Phone:</strong> +91 9643715746 || +91 7668014201
               </li>
               <li>
-                ✉️ <strong>Email:</strong> anas.saifi4201@gmail.com
+                ✉️ <strong>Email:</strong> signatureinteriors8@yahoo.com
               </li>
               <li>
                 ⏱ <strong>Working Hours:</strong> Mon – Sat (10 AM – 7 PM)
@@ -98,7 +98,7 @@ export default function Contact() {
                 Call Now
               </a>
               <a
-                href="https://wa.me/919643715746"
+                href="https://wa.me/917668014201"
                 target="_blank"
                 rel="noreferrer"
                 className="bg-[#25D366] text-white px-6 py-3 rounded-md hover:opacity-90"
@@ -196,7 +196,7 @@ export default function Contact() {
           consultation today.
         </p>
         <a
-          href="https://wa.me/919643715746"
+          href="https://wa.me/917668014201"
           target="_blank"
           rel="noreferrer"
           className="inline-block mt-8 bg-white text-[#b88c4a] px-10 py-4 rounded-md font-semibold hover:bg-gray-100"

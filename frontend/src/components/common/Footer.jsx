@@ -64,7 +64,7 @@ export default function Footer() {
             <li>📍 All India Service</li>
             <li>📞 +91 9643715746  || 7668014201</li>
             {/* <li>✉️ info@signaturespacestudio.com</li> */}
-            <li>✉️ anas.saifi4201@gmail.com</li>
+            <li>✉️ signatureinteriors8@yahoo.com</li>
           </ul>
 
           {/* SOCIAL */}
