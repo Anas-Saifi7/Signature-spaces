@@ -19,15 +19,27 @@ export default function Footer() {
         </div>
 
         {/* SERVICES */}
-        <div>
-          <h4 className="text-white font-semibold mb-3">Services</h4>
-          <ul className="space-y-1">
-            <li>Home Interior Design</li>
-            <li>Modular Kitchens</li>
-            <li>Office Interiors</li>
-            <li>Custom Furniture</li>
-          </ul>
-        </div>
+<div>
+  <h4 className="text-white font-semibold mb-3">Services</h4>
+  <ul className="grid grid-cols-2 gap-x-4 gap-y-1">
+    <li>Home Interior Design</li>
+    <li>Luxury Villa Interiors</li>
+    <li>Modular Kitchens</li>
+    <li>Wardrobe Design</li>
+    <li>Living Room Design</li>
+    <li>Bedroom Interiors</li>
+    <li>False Ceiling Design</li>
+    <li>TV Unit Design</li>
+    <li>Office Interiors</li>
+    <li>Retail & Showroom Interiors</li>
+    <li>Restaurant & Café Interiors</li>
+    <li>Space Planning</li>
+    <li>3D Interior Visualization</li>
+    <li>Custom Furniture</li>
+    <li>Renovation & Remodeling</li>
+    <li>Turnkey Interior Solutions</li>
+  </ul>
+</div>
 
         {/* QUICK LINKS */}
         <div>
@@ -71,7 +83,7 @@ export default function Footer() {
 
           <div className="flex gap-4 text-lg">
             <a
-              href="https://www.instagram.com/signaturespacestudio"
+              href="https://www.instagram.com/ornexa.living?igsh=N2I1MDNnaTRpNTFu&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"

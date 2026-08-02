@@ -110,7 +110,6 @@ export default function Navbar() {
       </nav>
 
       {/* MOBILE MENU */}
-      {/* MOBILE MENU */}
       {open && (
         <div className="md:hidden bg-white border-t shadow-sm">
           <div className="px-6 py-6 flex flex-col gap-5 text-center">

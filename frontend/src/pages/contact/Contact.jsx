@@ -24,7 +24,7 @@ export default function Contact() {
     setSuccess(false);
 
     try {
-     axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, form);
+      axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, form);
       setSuccess(true);
       setForm({
         name: "",
@@ -43,11 +43,18 @@ export default function Contact() {
   return (
     <>
       {/* ================= SEO ================= */}
-      <SEO
+      {/* <SEO
         title="Contact Interior Designers in India | Signature Space Studio Interiors"
         description="Contact Signature Space Studio Interiors for premium interior design and custom furniture services across India. Get a free consultation with our expert designers."
         keywords="contact interior designer india, interior design consultation, custom furniture contact"
         url="https://signaturespacestudio.com/contact"
+      /> */}
+
+      <SEO
+        title="Contact Interior Designers in India | Signature Space Studio Interiors"
+        description="Contact Signature Space Studio Interiors for premium home, office, modular kitchen, and custom furniture services across India. Book your free interior design consultation today."
+        keywords="interior designer, home interior, modular kitchen, office interior, custom furniture, contact interior designer india"
+        url="https://signature-spaces.vercel.app/contact"
       />
 
       {/* ================= HERO ================= */}
@@ -92,7 +99,7 @@ export default function Contact() {
 
             <div className="mt-10 flex gap-4">
               <a
-                href="tel:+919643715746"
+                href="tel:+917668014201"
                 className="border px-6 py-3 rounded-md hover:bg-gray-50"
               >
                 Call Now
@@ -115,9 +122,16 @@ export default function Contact() {
             </h3>
 
             {success && (
-              <p className="mt-4 text-green-600 font-medium">
-                ✅ Thank you! Our team will contact you shortly.
-              </p>
+              <div className="mt-5 rounded-lg border border-green-200 bg-green-50 p-4">
+                <p className="font-semibold text-green-700">
+                  ✅ Request Submitted Successfully!
+                </p>
+
+                <p className="text-green-600 mt-1">
+                  Thank you for contacting Signature Space Studio Interiors.
+                  Our team will get in touch with you within 24 hours.
+                </p>
+              </div>
             )}
 
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
@@ -160,17 +174,27 @@ export default function Contact() {
               >
                 <option value="">Select Service</option>
                 <option>Home Interior Design</option>
+                <option>Luxury Villa Interior</option>
                 <option>Modular Kitchen</option>
-                <option>Office & Commercial Interior</option>
+                <option>Bedroom Interior</option>
+                <option>Living Room Interior</option>
+                <option>Office Interior</option>
+                <option>Commercial Interior</option>
+                <option>Restaurant & Cafe Interior</option>
+                <option>False Ceiling Design</option>
+                <option>Wardrobe Design</option>
                 <option>Custom Furniture</option>
+                <option>Turnkey Interior Solutions</option>
+                <option>Renovation & Remodeling</option>
               </select>
 
               <textarea
                 name="message"
+                required
                 value={form.message}
                 onChange={handleChange}
                 rows="4"
-                placeholder="Tell us about your project"
+                placeholder="Please describe your project, location, budget, and preferred timeline."
                 className="w-full border px-4 py-3 rounded-md focus:ring-2 focus:ring-[#b88c4a]"
               />
 
@@ -179,7 +203,7 @@ export default function Contact() {
                 disabled={loading}
                 className="w-full bg-[#b88c4a] text-white py-3 rounded-md font-semibold hover:bg-[#a0783f]"
               >
-                {loading ? "Submitting..." : "Submit Request"}
+                {loading ? "Submitting..." : "Book Free Consultation"}
               </button>
             </form>
           </div>

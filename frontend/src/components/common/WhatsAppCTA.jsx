@@ -1,13 +1,29 @@
 export default function WhatsAppCTA({ city = "" }) {
-  const message = encodeURIComponent(
-    `Hi, I am interested in interior design services${
-      city ? " in " + city : ""
-    }. Please share details.`
-  );
+  // const message = encodeURIComponent(
+  //   `Hi, I am interested in interior design services${
+  //     city ? " in " + city : ""
+  //   }. Please share details.`
+  // );
+const message = encodeURIComponent(
+  `Hello Signature Space Studio Interiors 👋
 
+I am interested in your interior design services${
+    city ? ` in ${city}` : ""
+  }.
+
+Please share:
+🏡 Home Interior Solutions
+🍽️ Modular Kitchen Designs
+🏢 Office & Commercial Interiors
+🛋️ Custom Furniture
+💰 Pricing & Packages
+📅 Free Consultation Details
+
+I look forward to hearing from you. Thank you!`
+);
   return (
     <a
-      href={`https://wa.me/919643715746?text=${message}`}
+      href={`https://wa.me/917668014201?text=${message}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
