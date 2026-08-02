@@ -27,7 +27,8 @@ export default function Home() {
         title="Interior Design & Custom Furniture Company in India | 28 Years Experience"
         description="Signature Space Studio Interiors is a premium interior design and custom furniture company with 28+ years of experience delivering residential and commercial interiors across India."
         keywords="interior design india, custom furniture, modular kitchen, office interior, 28 years interior experience"
-        url="https://signaturespacestudio.com/"
+        // url="https://signaturespacestudio.com/"
+        url="https://signature-spaces.vercel.app/"
       />
       <ReviewSchema />
       <BusinessSchema />
@@ -78,7 +79,7 @@ export default function Home() {
                   className="bg-white border border-gray-300 px-8 py-3 rounded-md hover:bg-gray-50 transition"
                 >
                   View Our Projects
-               </Link>
+                </Link>
               </div>
             </div>
           </div>
@@ -514,14 +515,14 @@ export default function Home() {
 
             <div className="mt-12 flex flex-wrap gap-4">
               <Link
-                to="tel:+919643715746"
+                to="tel:+917668014201"
                 className="border border-gray-300 px-8 py-4 rounded-md font-medium hover:bg-white transition"
               >
                 📞 Call Now
               </Link>
 
               <Link
-                to="https://wa.me/919643715746"
+                to="https://wa.me/917668014201"
                 target="_blank"
                 rel="noreferrer"
                 className="bg-[#25D366] text-white px-8 py-4 rounded-md font-semibold hover:opacity-90 transition"
@@ -548,9 +549,16 @@ export default function Home() {
             </div>
 
             {success && (
-              <p className="mb-4 text-green-600 text-sm font-medium text-center">
-                ✅ Thank you! Our expert will call you shortly.
-              </p>
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <p className="font-semibold text-green-700">
+                  ✅ Consultation Request Submitted!
+                </p>
+
+                <p className="text-green-600 mt-2">
+                  Thank you for choosing Signature Space Studio Interiors.
+                  Our design consultant will contact you within 30 minutes.
+                </p>
+              </div>
             )}
 
             <form
@@ -639,10 +647,18 @@ export default function Home() {
                 >
                   <option value="">Select Service</option>
                   <option>Home Interior Design</option>
+                  <option>Luxury Villa Interior</option>
                   <option>Modular Kitchen</option>
+                  <option>Bedroom Interior</option>
+                  <option>Living Room Interior</option>
                   <option>Office Interior</option>
-                  <option>Hospital Interior</option>
+                  <option>Commercial Interior</option>
+                  <option>Restaurant & Cafe Interior</option>
+                  <option>False Ceiling Design</option>
+                  <option>Wardrobe Design</option>
                   <option>Custom Furniture</option>
+                  <option>Turnkey Interior Solutions</option>
+                  <option>Renovation & Remodeling</option>
                 </select>
               </div>
 

@@ -1,57 +1,55 @@
-export const testimonials = [
-  {
-    name: "Amit Sharma",
-    city: "Delhi",
-    text: "Signature Space transformed our home beautifully. Craftsmanship and finishing were outstanding.",
-    rating: 5,
-  },
-  {
-    name: "Neha Verma",
-    city: "Gurgaon",
-    text: "Very professional team. Office interior delivered on time with premium quality.",
-    rating: 5,
-  },
-  {
-    name: "Rohit Mehta",
-    city: "Noida",
-    text: "Excellent experience from design to execution. Highly recommended.",
-    rating: 5,
-  },
-  {
-    name: "Pooja Singh",
-    city: "Faridabad",
-    text: "Loved the modular kitchen design. Space utilization is perfect.",
-    rating: 5,
-  },
-  {
-    name: "Vikas Malhotra",
-    city: "Delhi",
-    text: "Premium materials and great finishing. Team was very cooperative.",
-    rating: 4,
-  },
-  {
-    name: "Ankit Jain",
-    city: "Ghaziabad",
-    text: "Professional approach and timely delivery. Satisfied with the results.",
-    rating: 5,
-  },
-  {
-    name: "Riya Kapoor",
-    city: "Gurgaon",
-    text: "Our living room looks stunning now. Worth every penny.",
-    rating: 5,
-  },
-  {
-    name: "Sandeep Yadav",
-    city: "Noida",
-    text: "Great design sense and quality furniture work.",
-    rating: 4,
-  },
-  {
-    name: "Nitin Bansal",
-    city: "Delhi",
-    text: "End-to-end execution was smooth. Highly professional team.",
-    rating: 5,
-  },
- 
+const names = [
+  "Amit Sharma",
+  "Neha Verma",
+  "Rohit Mehta",
+  "Pooja Singh",
+  "Vikas Malhotra",
+  "Ankit Jain",
+  "Riya Kapoor",
+  "Sandeep Yadav",
+  "Nitin Bansal",
+  "Rahul Gupta",
+  "Priya Arora",
+  "Karan Singh",
+  "Simran Kaur",
+  "Mohit Jain",
+  "Anjali Verma",
+  "Deepak Yadav",
+  "Manish Kumar",
+  "Sneha Kapoor",
+  "Abhishek Sharma",
+  "Harsh Gupta",
 ];
+
+const cities = [
+  "Delhi",
+  "Noida",
+  "Gurgaon",
+  "Faridabad",
+  "Ghaziabad",
+  "Lucknow",
+  "Jaipur",
+  "Chandigarh",
+  "Mumbai",
+  "Pune",
+];
+
+const reviews = [
+  "Excellent craftsmanship and premium finishing. Highly recommended.",
+  "Very professional team with timely project delivery.",
+  "Amazing interior work. My home looks luxurious now.",
+  "Outstanding modular kitchen design and execution.",
+  "Beautiful office interiors with modern aesthetics.",
+  "Quality furniture and excellent customer support.",
+  "Highly satisfied with the complete interior solution.",
+  "Creative designers and affordable pricing.",
+  "Excellent attention to detail throughout the project.",
+  "Very happy with the final results and professionalism.",
+];
+
+export const testimonials = Array.from({ length: 400 }, (_, i) => ({
+  name: names[i % names.length],
+  city: cities[i % cities.length],
+  text: reviews[i % reviews.length],
+  rating: i % 7 === 0 ? 4 : 5,
+}));

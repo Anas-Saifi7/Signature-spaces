@@ -1,240 +1,268 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {
+  FaChevronLeft,
+  FaChevronRight,
+  FaQuoteLeft,
+  FaStar,
+} from "react-icons/fa";
+import { motion } from "framer-motion";
+
 import { testimonials as staticTestimonials } from "../../data/testimonialsData";
 
 export default function Testimonials() {
   const [reviews, setReviews] = useState([]);
   const [current, setCurrent] = useState(0);
 
-  const [showForm, setShowForm] = useState(false);
-  const [editingReview, setEditingReview] = useState(null);
-  const [editingId, setEditingId] = useState(null);
-
-  const [form, setForm] = useState({
-    name: "",
-    city: "",
-    text: "",
-    rating: 5,
-  });
-
-  // ================= FETCH REVIEWS =================
-const fetchReviews = async () => {
+  const fetchReviews = async () => {
   try {
-    const res = await axios.get(
+    const { data } = await axios.get(
       `${import.meta.env.VITE_API_URL}/api/reviews`
     );
-    setReviews([...res.data, ...staticTestimonials]);
-  } catch {
+
+    // Sirf valid reviews
+    const realReviews = data.filter(
+      (review) =>
+        review.name?.trim() &&
+        review.city?.trim() &&
+        review.text?.trim()
+    );
+
+    // Real + Fake
+    setReviews([
+...staticTestimonials,
+...realReviews
+]);
+  } catch (err) {
     setReviews(staticTestimonials);
   }
 };
-
 
   useEffect(() => {
     fetchReviews();
   }, []);
 
-  // ================= AUTO SLIDER =================
   useEffect(() => {
     if (!reviews.length) return;
+
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % reviews.length);
     }, 5000);
+
     return () => clearInterval(timer);
   }, [reviews]);
 
   if (!reviews.length) return null;
 
   const review = reviews[current];
-  const isReal = !!review._id;
 
-  // ================= DELETE =================
-  const handleDelete = async (review) => {
-    if (!window.confirm("Delete this review?")) return;
-
-    if (review._id) {
-      // REAL → backend
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/reviews/${review._id}`);
-      fetchReviews();
-    } else {
-      // FAKE → frontend only
-      setReviews((prev) => prev.filter((r) => r !== review));
-    }
+  const nextSlide = () => {
+    setCurrent((prev) => (prev + 1) % reviews.length);
   };
 
-  // ================= EDIT =================
-  const handleEdit = (review) => {
-    setForm({
-      name: review.name,
-      city: review.city,
-      text: review.text,
-      rating: review.rating || 5,
-    });
-    setEditingId(review._id || "fake");
-    setEditingReview(review);
-    setShowForm(true);
+  const prevSlide = () => {
+    setCurrent((prev) =>
+      prev === 0 ? reviews.length - 1 : prev - 1
+    );
   };
 
-  // ================= SUBMIT =================
-  const submitReview = async (e) => {
-    e.preventDefault();
+const initials = (review?.name || "Guest")
+  .split(" ")
+  .map((i) => i[0])
+  .join("")
+  .toUpperCase();
 
-    try {
-      if (editingId === "fake") {
-        // UPDATE FAKE (frontend only)
-        setReviews((prev) =>
-          prev.map((r) => (r === editingReview ? { ...form } : r))
-        );
-      } else if (editingId) {
-        // UPDATE REAL
-        await axios.put(`${import.meta.env.VITE_API_URL}/api/reviews/${editingId}`, form);
-        fetchReviews();
-      } else {
-  // NEW REAL REVIEW
-  await axios.post(
-    `${import.meta.env.VITE_API_URL}/api/reviews`,
-    form
-  );
-  fetchReviews();
-}
-
-    } catch (err) {
-      console.error(err);
-    }
-
-    setForm({ name: "", city: "", text: "", rating: 5 });
-    setEditingId(null);
-    setEditingReview(null);
-    setShowForm(false);
-  };
-
-  // ================= UI =================
   return (
-    <section className="relative py-3 bg-gradient-to-b from-[#f7f5f2] to-white overflow-hidden">
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-[#b88c4a]/10 rounded-full blur-3xl" />
+    <section className="relative overflow-hidden py-24 bg-gradient-to-b from-[#faf7f2] via-white to-[#faf7f2]">
 
-      <div className="relative max-w-5xl mx-auto px-6 text-center">
-        {/* HEADING */}
-        <span className="inline-block mb-4 px-4 py-1 text-xs tracking-widest uppercase rounded-full bg-[#b88c4a]/10 text-[#b88c4a]">
-          Testimonials
-        </span>
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#b88c4a]/10 rounded-full blur-3xl"></div>
 
-        <h2 className="text-4xl md:text-5xl font-extrabold">
-          Trusted by <span className="text-[#b88c4a]">Happy Clients</span>
-        </h2>
+      <div className="relative max-w-6xl mx-auto px-6">
 
-        <p className="mt-4 text-gray-600 text-lg">
-          Real experiences from homeowners & businesses across India
-        </p>
+        {/* Header */}
 
-        {/* SLIDER CARD */}
-        <div className="mt-10 bg-white/90 backdrop-blur rounded-3xl px-12 py-14 shadow-2xl">
-          {/* <div className="text-6xl text-[#b88c4a] mb-6">“</div> */}
+        <div className="text-center">
 
-          <p className="text-gray-700 text-lg leading-relaxed max-w-3xl mx-auto">
-            {review.text}
+          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#b88c4a]/10 text-[#b88c4a] uppercase tracking-widest text-sm font-semibold">
+
+            Testimonials
+
+          </span>
+
+          <h2 className="mt-6 text-5xl font-bold">
+
+            What Our
+
+            <span className="text-[#b88c4a]">
+
+              {" "}Clients Say
+
+            </span>
+
+          </h2>
+
+          <p className="mt-5 text-gray-600 max-w-3xl mx-auto">
+
+            Real experiences from homeowners and businesses who trusted Signature Space Studio Interiors.
+
           </p>
 
-          <div className="flex justify-center gap-1 mt-6 text-[#b88c4a] text-xl">
-            {"★".repeat(review.rating || 5)}
+          <div className="mt-8 flex justify-center gap-1">
+
+            {[1,2,3,4,5].map((i)=>
+
+              <FaStar
+                key={i}
+                className="text-[#b88c4a] text-xl"
+              />
+
+            )}
+
           </div>
 
-          <div className="mt-8 pt-5 border-t">
-            <p className="font-semibold text-lg">{review.name}</p>
-            <p className="text-sm text-gray-500">{review.city}, India</p>
-          </div>
+          <p className="mt-3 font-semibold">
 
-          {/* EDIT / DELETE (FAKE + REAL) */}
-          <div className="mt-6 flex justify-center gap-6 text-sm">
-            <button
-              onClick={() => handleEdit(review)}
-              className="text-[#b88c4a] hover:underline"
-            >
-              ✏️ Edit
-            </button>
-            <button
-              onClick={() => handleDelete(review)}
-              className="text-red-500 hover:underline"
-            >
-              🗑 Delete
-            </button>
-          </div>
+            Rated 4.9 by Hundreds of Happy Clients
 
-          {/* NAVIGATION */}
-          <div className="mt-10 flex justify-center gap-8">
-            <button
-              onClick={() =>
-                setCurrent((current - 1 + reviews.length) % reviews.length)
-              }
-              className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-gray-50"
-            >
-              ←
-            </button>
-            <button
-              onClick={() => setCurrent((current + 1) % reviews.length)}
-              className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-gray-50"
-            >
-              →
-            </button>
-          </div>
+          </p>
+
         </div>
 
-        {/* ADD REVIEW */}
-        <div className="mt-16">
-          <button
-            onClick={() => {
-              setShowForm(true);
-              setEditingId(null);
-              setEditingReview(null);
-              setForm({
-                name: "",
-                city: "",
-                text: "",
-                rating: 5,
-              });
-            }}
-            className="bg-[#b88c4a] text-white px-10 py-4 rounded-md font-semibold hover:bg-[#a0783f]"
-          >
-            Leave a Review
-          </button>
-        </div>
+        {/* Premium Review Card */}
 
-        {/* FORM */}
-        {showForm && (
-          <div className="mt-12 max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-xl">
-            <form onSubmit={submitReview} className="space-y-4">
-              <input
-                placeholder="Your Name"
-                required
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full border px-4 py-3 rounded-md"
-              />
-              <input
-                placeholder="City"
-                required
-                value={form.city}
-                onChange={(e) => setForm({ ...form, city: e.target.value })}
-                className="w-full border px-4 py-3 rounded-md"
-              />
-              <textarea
-                placeholder="Your Review"
-                required
-                rows="3"
-                value={form.text}
-                onChange={(e) => setForm({ ...form, text: e.target.value })}
-                className="w-full border px-4 py-3 rounded-md"
-              />
-              <button
-                type="submit"
-                className="w-full bg-[#b88c4a] text-white py-3 rounded-md font-semibold"
-              >
-                {editingId ? "Update Review" : "Submit Review"}
-              </button>
-            </form>
-          </div>
-        )}
+<div className="mt-16 relative">
+
+  <div className="bg-white/90 backdrop-blur-xl rounded-[32px] shadow-[0_20px_80px_rgba(0,0,0,.08)] border border-gray-100 p-10 md:p-16">
+
+    {/* Quote */}
+
+    <div className="flex justify-center">
+
+      <div className="w-20 h-20 rounded-full bg-[#b88c4a]/10 flex items-center justify-center">
+
+        <FaQuoteLeft className="text-[#b88c4a] text-3xl" />
+
       </div>
-    </section>
+
+    </div>
+
+    {/* Review */}
+
+    <p className="mt-8 text-xl leading-9 text-gray-700 text-center max-w-3xl mx-auto">
+
+      "{review?.text || "Amazing Interior Work!"}"
+
+    </p>
+
+    {/* Stars */}
+
+    <div className="flex justify-center gap-1 mt-8">
+
+      {Array.from({ length: review.rating || 5 }).map((_, index) => (
+
+        <FaStar
+          key={index}
+          className="text-[#b88c4a] text-xl"
+        />
+
+      ))}
+
+    </div>
+
+    {/* Client */}
+
+    <div className="mt-10 flex flex-col items-center">
+
+      <div className="w-20 h-20 rounded-full bg-[#b88c4a] text-white text-2xl font-bold flex items-center justify-center shadow-lg">
+
+        {initials}
+
+      </div>
+
+      <h3 className="mt-5 text-2xl font-bold text-gray-900">
+
+       {review?.name || "Guest"}
+
+      </h3>
+
+      <p className="text-gray-500">
+
+      {review?.city || "India"}
+
+      </p>
+
+    </div>
+
+    {/* Navigation */}
+
+<div className="flex items-center justify-center gap-8 mt-10">
+
+<button
+  onClick={prevSlide}
+  className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center hover:bg-[#b88c4a] hover:text-white transition-all duration-300"
+>
+  <FaChevronLeft />
+</button>
+
+<p className="font-semibold text-[#b88c4a]">
+   <span className="text-lg font-bold tracking-wider text-[#b88c4a]">
+  {current + 1} / {reviews.length}
+</span>
+</p>
+
+<button
+  onClick={nextSlide}
+  className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center hover:bg-[#b88c4a] hover:text-white transition-all duration-300"
+>
+  <FaChevronRight />
+</button>
+
+</div>
+
+  </div>
+
+</div>
+
+{/* Google Review CTA */}
+
+<div className="mt-20 text-center">
+
+  <div className="inline-block bg-gradient-to-r from-[#b88c4a] to-[#d4a85d] rounded-3xl px-10 py-10 shadow-2xl text-white max-w-3xl">
+
+    <h3 className="text-3xl font-bold">
+
+      Loved Our Work?
+
+    </h3>
+
+    <p className="mt-4 text-white/90 leading-8">
+
+      Your feedback helps us grow and helps other homeowners
+      discover Signature Space Studio Interiors.
+
+      We'd love to hear about your experience.
+
+    </p>
+
+  <a
+  href="https://maps.app.goo.gl/TfzZfPMcYf2Yuu4n8?g_st=aw"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex mt-8 items-center justify-center bg-white text-[#b88c4a] font-semibold px-8 py-4 rounded-full hover:scale-105 transition duration-300"
+>
+  ⭐ Write a Google Review
+</a>
+
+  </div>
+
+</div>
+
+</div>
+
+</section>
+
   );
 }
+
+
+

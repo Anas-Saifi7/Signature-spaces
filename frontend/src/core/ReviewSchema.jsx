@@ -6,12 +6,14 @@ export default function ReviewSchema() {
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Organization",
+          "@type": "LocalBusiness",
           name: "Signature Space Studio Interiors",
+          url: "https://signature-spaces.vercel.app",
+
           aggregateRating: {
             "@type": "AggregateRating",
-            ratingValue: "4.9",
-            reviewCount: "350",
+            ratingValue: "4.8",
+            reviewCount: "57",
           },
         })}
       </script>

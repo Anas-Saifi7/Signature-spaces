@@ -7,17 +7,24 @@ export default function BusinessSchema() {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          "@id": "https://signaturespacestudio.com/#business",
-          name: "Signature Space Studio Interiors",
-          url: "https://signaturespacestudio.com",
-          logo: "https://signaturespacestudio.com/logo.png",
-          image: "https://signaturespacestudio.com/og-image.jpg",
 
-          telephone: "+91-9643715746",
+          "@id": "https://signature-spaces.vercel.app/#business",
+          name: "Signature Space Studio Interiors",
+
+          url: "https://signature-spaces.vercel.app",
+
+          logo: "https://signature-spaces.vercel.app/logo.png",
+
+          image: "https://signature-spaces.vercel.app/og-image.jpg",
+
+          telephone: "+91-7668014201",
+
+          email: "signatureinteriors8@yahoo.com",
+
           priceRange: "₹₹₹",
 
           description:
-            "Signature Space Studio Interiors is a premium interior design and custom furniture company based in Sarita Vihar, New Delhi. With over 28 years of experience, we specialize in residential interiors, modular kitchens, office and commercial interiors, and custom furniture manufacturing. Visits by appointment only.",
+            "Signature Space Studio Interiors is a premium interior design and custom furniture company with over 28 years of experience. We specialize in residential interiors, modular kitchens, office interiors, commercial interiors, hospital interiors, custom furniture manufacturing, and turnkey interior solutions across Delhi NCR and PAN India.",
 
           address: {
             "@type": "PostalAddress",
@@ -29,24 +36,28 @@ export default function BusinessSchema() {
 
           areaServed: [
             {
-              "@type": "AdministrativeArea",
+              "@type": "City",
               name: "Delhi",
             },
             {
-              "@type": "AdministrativeArea",
+              "@type": "City",
               name: "Noida",
             },
             {
-              "@type": "AdministrativeArea",
-              name: "Gurgaon",
+              "@type": "City",
+              name: "Gurugram",
             },
             {
-              "@type": "AdministrativeArea",
+              "@type": "City",
               name: "Faridabad",
             },
             {
-              "@type": "AdministrativeArea",
+              "@type": "City",
               name: "Ghaziabad",
+            },
+            {
+              "@type": "Country",
+              name: "India",
             },
           ],
 
@@ -66,15 +77,28 @@ export default function BusinessSchema() {
             },
           ],
 
+          sameAs: [
+            "https://www.instagram.com/ornexa.living",
+            "https://www.facebook.com/signaturespacestudio",
+          ],
+
           hasOfferCatalog: {
             "@type": "OfferCatalog",
             name: "Interior Design & Furniture Services",
+
             itemListElement: [
               {
                 "@type": "Offer",
                 itemOffered: {
                   "@type": "Service",
-                  name: "Residential Interior Design",
+                  name: "Home Interior Design",
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Luxury Villa Interiors",
                 },
               },
               {
@@ -95,7 +119,28 @@ export default function BusinessSchema() {
                 "@type": "Offer",
                 itemOffered: {
                   "@type": "Service",
+                  name: "Hospital Interiors",
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Restaurant & Cafe Interiors",
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
                   name: "Custom Furniture Manufacturing",
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: "Turnkey Interior Solutions",
                 },
               },
             ],
@@ -105,3 +150,21 @@ export default function BusinessSchema() {
     </Helmet>
   );
 }
+
+
+
+
+
+
+///////////////
+// When you buy a .com domain later
+
+// You only need to replace these four lines:
+
+// "@id": "https://signature-spaces.vercel.app/#business",
+
+// url: "https://signature-spaces.vercel.app",
+
+// logo: "https://signature-spaces.vercel.app/logo.png",
+
+// image: "https://signature-spaces.vercel.app/og-image.jpg",
