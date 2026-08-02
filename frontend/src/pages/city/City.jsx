@@ -22,7 +22,7 @@ export default function City() {
         title={`Interior Designer in ${data.name} | 28+ Years Experience`}
         description={`Looking for the best interior designer in ${data.name}? We offer home, hospital, office, retail & custom furniture solutions with 28+ years experience across ${data.areas}.`}
         keywords={`interior designer in ${data.name}, home interior ${data.name}, office interior ${data.name}, custom furniture ${data.name}`}
-        url={`https://signaturespacestudio.com/interior-designer/${city}`}
+        url={`https://signature-spaces.vercel.app/interior-designer/${city}`}
       />
 
       {/* ================= HERO ================= */}

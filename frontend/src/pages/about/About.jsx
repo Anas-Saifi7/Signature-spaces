@@ -9,7 +9,7 @@ export default function About() {
         title="About Us | Signature Space Studio Interiors – Interior Design Company India"
         description="Learn about Signature Space Studio Interiors, a premium interior design and custom furniture company delivering residential and commercial interiors across India."
         keywords="about interior design company, signature space studio interiors, interior designers india, custom furniture company"
-        url="https://signaturespacestudio.com/about"
+        url="https://signature-spaces.vercel.app/about"
       />
 
       <BusinessSchema />

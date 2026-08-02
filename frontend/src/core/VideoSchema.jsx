@@ -11,16 +11,16 @@ export default function VideoSchema() {
           description:
             "Watch how Signature Space Studio Interiors transforms spaces with 28+ years of expertise in interior design and custom furniture.",
           thumbnailUrl:
-            "https://signaturespacestudio.com/videos/workshop-poster.jpg",
+            "https://signature-spaces.vercel.app/videos/workshop-poster.jpg",
           uploadDate: "2025-01-01",
           contentUrl:
-            "https://signaturespacestudio.com/videos/furniture-workshop.mp4",
+            "https://signature-spaces.vercel.app/videos/furniture-workshop.mp4",
           publisher: {
             "@type": "Organization",
             name: "Signature Space Studio Interiors",
             logo: {
               "@type": "ImageObject",
-              url: "https://signaturespacestudio.com/logo.png",
+              url: "https://signature-spaces.vercel.app/logo.png",
             },
           },
         })}

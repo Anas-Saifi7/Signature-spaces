@@ -43,12 +43,6 @@ export default function Contact() {
   return (
     <>
       {/* ================= SEO ================= */}
-      {/* <SEO
-        title="Contact Interior Designers in India | Signature Space Studio Interiors"
-        description="Contact Signature Space Studio Interiors for premium interior design and custom furniture services across India. Get a free consultation with our expert designers."
-        keywords="contact interior designer india, interior design consultation, custom furniture contact"
-        url="https://signaturespacestudio.com/contact"
-      /> */}
 
       <SEO
         title="Contact Interior Designers in India | Signature Space Studio Interiors"

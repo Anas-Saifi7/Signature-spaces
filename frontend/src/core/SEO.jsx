@@ -5,7 +5,7 @@ export default function SEO({
   description,
   keywords,
   url,
-  image = "https://signaturespacestudio.com/og-image.jpg",
+image="https://signature-spaces.vercel.app/og-image.jpg"
 }) {
   return (
     <Helmet>
