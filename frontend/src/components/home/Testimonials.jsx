@@ -13,14 +13,16 @@ import { testimonials as staticTestimonials } from "../../data/testimonialsData"
 export default function Testimonials() {
   const [reviews, setReviews] = useState([]);
   const [current, setCurrent] = useState(0);
-
+const [loading, setLoading] = useState(true);
   const fetchReviews = async () => {
   try {
     const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/api/reviews`
+      `${import.meta.env.VITE_API_URL}/api/reviews`,
+      {
+        // timeout: 10000,
+      }
     );
 
-    // Sirf valid reviews
     const realReviews = data.filter(
       (review) =>
         review.name?.trim() &&
@@ -28,15 +30,15 @@ export default function Testimonials() {
         review.text?.trim()
     );
 
-    // Real + Fake
-    setReviews([
-...staticTestimonials,
-...realReviews
-]);
+    setReviews([...staticTestimonials, ...realReviews]);
   } catch (err) {
+    console.error(err);
     setReviews(staticTestimonials);
+  } finally {
+    setLoading(false);
   }
 };
+   
 
   useEffect(() => {
     fetchReviews();
@@ -52,9 +54,25 @@ export default function Testimonials() {
     return () => clearInterval(timer);
   }, [reviews]);
 
-  if (!reviews.length) return null;
+if (loading) {
+  return (
+    <section className="py-24 text-center">
+      <p className="text-gray-500 text-lg">
+        Loading testimonials...
+      </p>
+    </section>
+  );
+}
 
-  const review = reviews[current];
+if (!reviews.length) {
+  return null;
+}
+
+ useEffect(() => {
+  if (current >= reviews.length) {
+    setCurrent(0);
+  }
+}, [reviews, current]);
 
   const nextSlide = () => {
     setCurrent((prev) => (prev + 1) % reviews.length);
@@ -132,7 +150,14 @@ const initials = (review?.name || "Guest")
 
 <div className="mt-16 relative">
 
-  <div className="bg-white/90 backdrop-blur-xl rounded-[32px] shadow-[0_20px_80px_rgba(0,0,0,.08)] border border-gray-100 p-10 md:p-16">
+  {/* <div className="bg-white/90 backdrop-blur-xl rounded-[32px] shadow-[0_20px_80px_rgba(0,0,0,.08)] border border-gray-100 p-10 md:p-16"> */}
+  <motion.div
+  key={current}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+  className="bg-white/90 backdrop-blur-xl rounded-[32px] shadow-[0_20px_80px_rgba(0,0,0,.08)] border border-gray-100 p-10 md:p-16"
+>
 
     {/* Quote */}
 
@@ -219,7 +244,8 @@ const initials = (review?.name || "Guest")
 
 </div>
 
-  </div>
+  {/* </div> */}
+  </motion.div>
 
 </div>
 

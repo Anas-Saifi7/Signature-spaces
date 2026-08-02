@@ -5,8 +5,18 @@ const router = express.Router();
 
 /* GET all reviews */
 router.get("/", async (req, res) => {
-  const reviews = await Review.find().sort({ createdAt: -1 });
-  res.json(reviews);
+  try {
+    const reviews = await Review.find().sort({ createdAt: -1 });
+
+    res.status(200).json(reviews);
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch reviews",
+    });
+  }
 });
 
 /* POST new review */
@@ -16,20 +26,8 @@ router.post("/", async (req, res) => {
   res.status(201).json(review);
 });
 
-/* UPDATE review */
-router.put("/:id", async (req, res) => {
-  const updated = await Review.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    { new: true }
-  );
-  res.json(updated);
-});
 
-/* DELETE review */
-router.delete("/:id", async (req, res) => {
-  await Review.findByIdAndDelete(req.params.id);
-  res.json({ message: "Review deleted" });
-});
+
+
 
 export default router;
