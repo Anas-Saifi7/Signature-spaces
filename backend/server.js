@@ -7,9 +7,9 @@ import reviewsRoute from "./routes/reviews.js";
 
 dotenv.config();
 
-console.log("EMAIL_USER =", process.env.EMAIL_USER);
-console.log("EMAIL_PASS =", process.env.EMAIL_PASS);
-console.log("ADMIN_EMAIL =", process.env.ADMIN_EMAIL);
+// console.log("EMAIL_USER =", process.env.EMAIL_USER);
+// console.log("EMAIL_PASS =", process.env.EMAIL_PASS);
+// console.log("ADMIN_EMAIL =", process.env.ADMIN_EMAIL);
 
 connectDB();
 
@@ -25,19 +25,22 @@ import transporter from "./config/mail.js";
 
 app.get("/test-mail", async (req, res) => {
   try {
+    await transporter.verify();
+    console.log("SMTP Connected ✅");
+
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.ADMIN_EMAIL,
       subject: "SMTP Test",
-      text: "If you got this, SMTP is working 🎉",
+      text: "SMTP Working 🎉",
     });
+
     res.send("MAIL SENT ✅");
   } catch (err) {
-    console.error("MAIL ERROR ❌", err);
+    console.error(err);
     res.status(500).send(err.message);
   }
 });
-
 
 app.get("/", (req, res) => {
   res.send("SignatureSpace Backend Running 🚀");
