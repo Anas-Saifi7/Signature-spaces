@@ -4,7 +4,13 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import contactRoutes from "./routes/contactRoutes.js";
 import reviewsRoute from "./routes/reviews.js";
+
 dotenv.config();
+
+console.log("EMAIL_USER =", process.env.EMAIL_USER);
+console.log("EMAIL_PASS =", process.env.EMAIL_PASS);
+console.log("ADMIN_EMAIL =", process.env.ADMIN_EMAIL);
+
 connectDB();
 
 const app = express();
